@@ -1,4 +1,5 @@
 import { slugify } from "@/lib/slug";
+import { defaultActivities } from "@/lib/content/activities";
 import { organiserTeamMembers } from "@/lib/content/team";
 
 const now = new Date("2026-07-26T00:00:00+03:00");
@@ -346,6 +347,14 @@ export const fallbackPartners = fallbackCommunities
     featured: true,
     published: true
   }));
+
+export const fallbackActivities = defaultActivities.map((activity, index) => ({
+  ...baseRecord(),
+  ...activity,
+  id: `fallback-activity-${index + 1}`,
+  slug: slugify(activity.title),
+  published: true
+}));
 
 export const fallbackAnnouncements = [
   {

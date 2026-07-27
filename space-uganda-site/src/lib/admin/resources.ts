@@ -1,4 +1,5 @@
 export type AdminResourceModel =
+  | "activity"
   | "announcement"
   | "campaign"
   | "community"
@@ -71,6 +72,40 @@ const submissionStatusOptions = [
 ];
 
 export const adminResources: AdminResourceConfig[] = [
+  {
+    slug: "activities",
+    label: "Activities",
+    singularLabel: "Activity",
+    model: "activity",
+    description:
+      "Year-round public programmes such as stargazing, STEM outreach, games, visits, and learning experiences.",
+    fields: [
+      { name: "title", label: "Title", type: "text", required: true },
+      {
+        name: "slug",
+        label: "Slug",
+        type: "text",
+        helpText: "Leave blank to derive from the activity title."
+      },
+      { name: "category", label: "Category", type: "text", required: true },
+      { name: "summary", label: "Summary", type: "textarea", required: true },
+      { name: "description", label: "Description", type: "textarea", required: true },
+      { name: "imageUrl", label: "Image URL", type: "url" },
+      { name: "cadence", label: "Cadence", type: "text" },
+      { name: "audience", label: "Audience", type: "text" },
+      { name: "leadOrganisation", label: "Lead Organisation", type: "text" },
+      {
+        name: "highlights",
+        label: "Highlights JSON",
+        type: "json",
+        helpText: "Use a JSON array, for example [\"Telescope viewing\", \"Mentor talks\"]."
+      },
+      { name: "sortOrder", label: "Sort Order", type: "number" },
+      { name: "featured", label: "Featured", type: "checkbox" },
+      { name: "published", label: "Published", type: "checkbox" }
+    ],
+    listFields: ["title", "category", "cadence", "featured", "published"]
+  },
   {
     slug: "communities",
     label: "Communities",

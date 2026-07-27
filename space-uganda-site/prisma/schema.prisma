@@ -101,6 +101,25 @@ model Partner {
   updatedAt    DateTime @updatedAt
 }
 
+model Activity {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  category         String
+  summary          String
+  description      String
+  imageUrl         String?
+  cadence          String?
+  audience         String?
+  leadOrganisation String?
+  highlights       Json?
+  sortOrder        Int      @default(0)
+  featured         Boolean  @default(false)
+  published        Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
 model Campaign {
   id             String            @id @default(cuid())
   name           String

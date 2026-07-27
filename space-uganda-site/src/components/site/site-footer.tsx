@@ -25,6 +25,7 @@ export function SiteFooter() {
           <p className="text-sm font-bold uppercase tracking-normal text-ugandaGold">Explore</p>
           <div className="mt-4 grid gap-2 text-sm text-white/70">
             <Link href="/community">Community</Link>
+            <Link href="/activities">Activities</Link>
             <Link href="/team">Team</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/wsw-2026">WSW Uganda 2026</Link>

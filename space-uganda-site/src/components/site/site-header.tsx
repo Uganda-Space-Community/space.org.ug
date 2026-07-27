@@ -5,6 +5,7 @@ import { siteIdentity } from "@/lib/constants";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/community", label: "Community" },
+  { href: "/activities", label: "Activities" },
   { href: "/team", label: "Team" },
   { href: "/gallery", label: "Gallery" },
   { href: "/wsw-2026", label: "WSW 2026" },

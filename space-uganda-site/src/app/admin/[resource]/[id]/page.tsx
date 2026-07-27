@@ -1,9 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { AdminFrame } from "@/components/admin/admin-frame";
 import { AdminResourceForm } from "@/components/admin/admin-resource-form";
 import { deleteResourceAction, updateResourceAction } from "@/lib/admin/actions";
 import { getResourceRecord, serializeAdminRecord } from "@/lib/admin/records";
+import { getCurrentSessionUser } from "@/lib/auth/current-user";
 import { getResourceConfig } from "@/lib/admin/resources";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +22,12 @@ export default async function EditResourcePage({ params }: EditResourcePageProps
 
   if (!config) {
     notFound();
+  }
+
+  const user = await getCurrentSessionUser();
+
+  if (!user) {
+    redirect("/admin/login");
   }
 
   const record = await getResourceRecord(config, id);

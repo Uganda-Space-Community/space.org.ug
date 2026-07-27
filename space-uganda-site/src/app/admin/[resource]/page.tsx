@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Plus } from "lucide-react";
 import { AdminFrame } from "@/components/admin/admin-frame";
 import { formatAdminValue, listResourceRecords } from "@/lib/admin/records";
+import { getCurrentSessionUser } from "@/lib/auth/current-user";
 import { getResourceConfig } from "@/lib/admin/resources";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +20,12 @@ export default async function ResourceListPage({ params }: ResourceListPageProps
 
   if (!config) {
     notFound();
+  }
+
+  const user = await getCurrentSessionUser();
+
+  if (!user) {
+    redirect("/admin/login");
   }
 
   const records = await listResourceRecords(config);

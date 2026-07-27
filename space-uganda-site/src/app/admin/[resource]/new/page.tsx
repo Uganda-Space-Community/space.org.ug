@@ -1,7 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AdminFrame } from "@/components/admin/admin-frame";
 import { AdminResourceForm } from "@/components/admin/admin-resource-form";
 import { createResourceAction } from "@/lib/admin/actions";
+import { getCurrentSessionUser } from "@/lib/auth/current-user";
 import { getResourceConfig } from "@/lib/admin/resources";
 
 export const dynamic = "force-dynamic";
@@ -18,6 +19,12 @@ export default async function NewResourcePage({ params }: NewResourcePageProps) 
 
   if (!config || config.allowCreate === false) {
     notFound();
+  }
+
+  const user = await getCurrentSessionUser();
+
+  if (!user) {
+    redirect("/admin/login");
   }
 
   const action = createResourceAction.bind(null, config.slug);

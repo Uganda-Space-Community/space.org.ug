@@ -9,6 +9,7 @@ import {
   organiserTeamMembers,
   type TeamMemberSeed
 } from "../src/lib/content/team";
+import { defaultActivities } from "../src/lib/content/activities";
 import { slugify } from "../src/lib/slug";
 
 const prisma = new PrismaClient();
@@ -324,6 +325,8 @@ const announcements = [
   }
 ] as const;
 
+const activities = defaultActivities;
+
 async function upsertTeamMember(member: TeamMemberSeed) {
   const existing = await prisma.teamMember.findFirst({
     where: { name: member.name, organisation: member.organisation }
@@ -505,6 +508,22 @@ async function main() {
       create: {
         ...partner,
         slug: slugify(partner.name),
+        published: true
+      }
+    });
+  }
+
+  for (const activity of activities) {
+    await prisma.activity.upsert({
+      where: { slug: slugify(activity.title) },
+      update: {
+        ...activity,
+        slug: slugify(activity.title),
+        published: true
+      },
+      create: {
+        ...activity,
+        slug: slugify(activity.title),
         published: true
       }
     });

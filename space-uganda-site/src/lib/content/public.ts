@@ -2,6 +2,7 @@ import { PublicationStatus } from "@prisma/client";
 import { hasDatabaseUrl, prisma } from "@/lib/db";
 import {
   fallbackAnnouncements,
+  fallbackActivities,
   fallbackCampaign,
   fallbackCommunities,
   fallbackGalleryItems,
@@ -83,6 +84,23 @@ export async function getTeamMembers() {
     return teamMembers.length ? teamMembers : fallbackTeamMembers;
   } catch {
     return fallbackTeamMembers;
+  }
+}
+
+export async function getActivities() {
+  if (!hasDatabaseUrl) {
+    return fallbackActivities;
+  }
+
+  try {
+    const activities = await prisma.activity.findMany({
+      where: { published: true },
+      orderBy: [{ sortOrder: "asc" }, { title: "asc" }]
+    });
+
+    return activities.length ? activities : fallbackActivities;
+  } catch {
+    return fallbackActivities;
   }
 }
 
