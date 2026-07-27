@@ -1,4 +1,5 @@
 import { slugify } from "@/lib/slug";
+import { organiserTeamMembers } from "@/lib/content/team";
 
 const now = new Date("2026-07-26T00:00:00+03:00");
 
@@ -220,43 +221,12 @@ export const fallbackCommunities = [
   published: true
 }));
 
-export const fallbackTeamMembers = [
-  {
-    name: "Ronnie Atuhaire",
-    role: "National Coordinator, WSW Uganda 2026",
-    organisation: "Space Junkies Uganda",
-    bio: "Ronnie leads national coordination, ecosystem convening, youth outreach, and partner mobilisation for Space Uganda and WSW Uganda 2026.",
-    featured: true
-  },
-  {
-    name: "Zoora Harrison",
-    role: "National Coordinator, WSW Uganda 2026",
-    organisation: "StellarView Technologies",
-    bio: "Zoora supports national coordination, space arts, storytelling, programme delivery, and public engagement for the 2026 campaign.",
-    featured: true
-  },
-  {
-    name: "Uganda Astronomical Society Programming Team",
-    role: "Astronomy And Stargazing Lead",
-    organisation: "Uganda Astronomical Society",
-    bio: "The astronomy team supports telescope experiences, night-sky interpretation, observation sessions, and public astronomy education.",
-    featured: false
-  },
-  {
-    name: "IEEE Makerere Student Branch Organising Team",
-    role: "Student Mobilisation Partner",
-    organisation: "IEEE Makerere Student Branch",
-    bio: "The student branch helps mobilise students, technical volunteers, engineering sessions, and university community participation.",
-    featured: false
-  }
-].map((member, index) => ({
+export const fallbackTeamMembers = organiserTeamMembers.map((member, index) => ({
   ...baseRecord(),
   ...member,
   id: `fallback-team-${index + 1}`,
-  photoUrl: null,
   email: null,
   links: null,
-  sortOrder: index + 1,
   published: true
 }));
 

@@ -1,6 +1,7 @@
 # Isolated implementation workspaces.
 .worktrees
 .worktrees/
+.codex-tmp/
 space-uganda-site.scaffold-backup/
 
 # Keep raw WSW source material local unless explicitly selected for app assets.

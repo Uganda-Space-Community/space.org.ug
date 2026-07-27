@@ -5,19 +5,13 @@ import {
   PublicationStatus,
   Role
 } from "@prisma/client";
+import {
+  organiserTeamMembers,
+  type TeamMemberSeed
+} from "../src/lib/content/team";
 import { slugify } from "../src/lib/slug";
 
 const prisma = new PrismaClient();
-
-type TeamSeed = {
-  name: string;
-  role: string;
-  organisation: string;
-  bio: string;
-  photoUrl?: string;
-  sortOrder: number;
-  featured: boolean;
-};
 
 const communities = [
   {
@@ -238,24 +232,7 @@ const communities = [
   }
 ] as const;
 
-const team: TeamSeed[] = [
-  {
-    name: "Ronnie Atuhaire",
-    role: "National Coordinator, World Space Week Uganda 2026",
-    organisation: "Space Junkies Uganda",
-    bio: "Ronnie leads Space Junkies Uganda and coordinates World Space Week Uganda 2026, connecting young Ugandans, institutions, and partners to the global space community.",
-    sortOrder: 1,
-    featured: true
-  },
-  {
-    name: "Zoora Harrison",
-    role: "National Coordinator, World Space Week Uganda 2026",
-    organisation: "StellarView Technologies",
-    bio: "Zoora supports national coordination through StellarView Technologies, bringing space outreach, visual programming, and partner engagement into the Space Uganda ecosystem.",
-    sortOrder: 2,
-    featured: true
-  }
-];
+const team: TeamMemberSeed[] = organiserTeamMembers;
 
 const partners = [
   {
@@ -314,7 +291,7 @@ const announcements = [
   }
 ] as const;
 
-async function upsertTeamMember(member: TeamSeed) {
+async function upsertTeamMember(member: TeamMemberSeed) {
   const existing = await prisma.teamMember.findFirst({
     where: { name: member.name, organisation: member.organisation }
   });
