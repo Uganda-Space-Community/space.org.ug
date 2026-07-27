@@ -3,6 +3,7 @@
 .worktrees/
 .codex-tmp/
 .netlify/
+netlify-*.log
 space-uganda-site.scaffold-backup/
 
 # Keep raw WSW source material local unless explicitly selected for app assets.

@@ -1,5 +1,5 @@
 import { PublicationStatus } from "@prisma/client";
-import { prisma } from "@/lib/db";
+import { hasDatabaseUrl, prisma } from "@/lib/db";
 import {
   fallbackAnnouncements,
   fallbackCampaign,
@@ -10,6 +10,10 @@ import {
 } from "@/lib/content/fallback";
 
 export async function getHomeContent() {
+  if (!hasDatabaseUrl) {
+    return fallbackHomeContent;
+  }
+
   try {
     const [featuredCommunities, announcements, campaign, partners] = await Promise.all([
       prisma.community.findMany({
@@ -49,6 +53,10 @@ export async function getHomeContent() {
 }
 
 export async function getCommunities() {
+  if (!hasDatabaseUrl) {
+    return fallbackCommunities;
+  }
+
   try {
     const communities = await prisma.community.findMany({
       where: { published: true },
@@ -62,6 +70,10 @@ export async function getCommunities() {
 }
 
 export async function getTeamMembers() {
+  if (!hasDatabaseUrl) {
+    return fallbackTeamMembers;
+  }
+
   try {
     const teamMembers = await prisma.teamMember.findMany({
       where: { published: true },
@@ -75,6 +87,10 @@ export async function getTeamMembers() {
 }
 
 export async function getGalleryItems() {
+  if (!hasDatabaseUrl) {
+    return fallbackGalleryItems;
+  }
+
   try {
     const galleryItems = await prisma.galleryItem.findMany({
       where: { published: true },
@@ -88,6 +104,10 @@ export async function getGalleryItems() {
 }
 
 export async function getAnnouncements() {
+  if (!hasDatabaseUrl) {
+    return fallbackAnnouncements;
+  }
+
   try {
     const announcements = await prisma.announcement.findMany({
       where: { status: PublicationStatus.PUBLISHED },
@@ -101,6 +121,10 @@ export async function getAnnouncements() {
 }
 
 export async function getWsw2026Content() {
+  if (!hasDatabaseUrl) {
+    return fallbackCampaign;
+  }
+
   try {
     const campaign = await prisma.campaign.findUnique({
       where: { slug: "world-space-week-uganda-2026" },

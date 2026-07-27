@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
+import { Orbitron, Rajdhani } from "next/font/google";
 import "./globals.css";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  variable: "--font-orbitron",
+  weight: ["400", "500", "600", "700", "800", "900"]
+});
+
+const rajdhani = Rajdhani({
+  subsets: ["latin"],
+  variable: "--font-rajdhani",
+  weight: ["400", "500", "600", "700"]
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://space.org.ug"),
@@ -27,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${orbitron.variable} ${rajdhani.variable}`}>{children}</body>
     </html>
   );
 }
