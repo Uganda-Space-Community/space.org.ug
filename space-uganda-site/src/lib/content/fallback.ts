@@ -102,15 +102,6 @@ export const fallbackCommunities = [
     featured: true
   },
   {
-    name: "StellarView Technologies Ltd",
-    category: "Technology Company",
-    summary: "A formal StellarView company partner in Uganda's space outreach network.",
-    description:
-      "StellarView Technologies Ltd supports technology, visual storytelling, and programme delivery for Space Uganda and WSW Uganda activities.",
-    location: "Uganda",
-    featured: false
-  },
-  {
     name: "Infinity Computers",
     category: "Technology Partner",
     summary: "A technology partner supporting digital capacity for Uganda's space ecosystem.",
@@ -224,15 +215,6 @@ export const fallbackCommunities = [
     summary: "A research and innovation institution in the national stakeholder map.",
     description:
       "UIRI is a potential institutional partner for prototyping, applied research, innovation, and technology demonstration.",
-    location: "Uganda",
-    featured: false
-  },
-  {
-    name: "UAS",
-    category: "Community",
-    summary: "A community partner referenced in the Uganda Space Week organising ecosystem.",
-    description:
-      "UAS is included as part of the broader partner network and can be expanded by administrators as details are confirmed.",
     location: "Uganda",
     featured: false
   }
