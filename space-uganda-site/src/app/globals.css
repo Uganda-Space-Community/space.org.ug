@@ -37,3 +37,142 @@ select {
   background: #f7c948;
   color: #15171c;
 }
+
+.team-avatar {
+  --avatar-accent: #f7c948;
+  --avatar-glow: #d92128;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 18px 40px rgba(21, 23, 28, 0.16);
+  animation: team-avatar-float 6s ease-in-out infinite;
+}
+
+.team-avatar::before {
+  position: absolute;
+  inset: 0.45rem;
+  z-index: -1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--avatar-accent) 68%, white), transparent 54%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 62%);
+  content: "";
+  filter: blur(0.35rem);
+  opacity: 0.72;
+  animation: team-avatar-pulse 3.8s ease-in-out infinite;
+}
+
+.team-avatar__orbit {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--avatar-accent) 72%, white);
+  border-radius: 999px;
+  opacity: 0.82;
+}
+
+.team-avatar__orbit--outer {
+  inset: 1rem;
+  transform: rotate(24deg) scaleX(1.42);
+  animation: team-avatar-orbit 7.5s linear infinite;
+}
+
+.team-avatar__orbit--inner {
+  inset: 1.55rem;
+  border-color: color-mix(in srgb, var(--avatar-glow) 74%, white);
+  transform: rotate(-28deg) scaleX(1.35);
+  animation: team-avatar-orbit 5.8s linear infinite reverse;
+}
+
+.team-avatar__core {
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 35% 30%, #ffffff, var(--avatar-accent) 35%, var(--avatar-glow));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--avatar-accent) 75%, transparent);
+}
+
+.team-avatar__satellite {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--avatar-glow) 72%, white);
+  animation: team-avatar-signal 2.6s ease-in-out infinite;
+}
+
+.team-avatar__initials {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes team-avatar-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.18rem);
+  }
+}
+
+@keyframes team-avatar-pulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes team-avatar-orbit {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes team-avatar-signal {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-avatar,
+  .team-avatar::before,
+  .team-avatar__orbit,
+  .team-avatar__satellite {
+    animation: none;
+  }
+}

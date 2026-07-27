@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Mail, UserRound } from "lucide-react";
+import type { CSSProperties } from "react";
+import { Mail } from "lucide-react";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -14,55 +14,69 @@ export const metadata: Metadata = {
     "Meet the national coordinators and organising teams helping build Space Uganda and World Space Week Uganda 2026."
 };
 
-const generatedAvatarPackUrl = "/assets/team/space-team-avatar-pack.png";
-const generatedAvatarPositions = ["0% 0%", "100% 0%", "0% 100%", "100% 100%"];
+const avatarThemes = [
+  {
+    accent: "#f7c948",
+    glow: "#d92128",
+    background:
+      "radial-gradient(circle at 25% 18%, rgba(247, 201, 72, 0.9), transparent 22%), linear-gradient(135deg, #15171c, #263343)"
+  },
+  {
+    accent: "#2eb67d",
+    glow: "#f7c948",
+    background:
+      "radial-gradient(circle at 70% 24%, rgba(46, 182, 125, 0.85), transparent 24%), linear-gradient(135deg, #171923, #253046)"
+  },
+  {
+    accent: "#d92128",
+    glow: "#7dd3fc",
+    background:
+      "radial-gradient(circle at 28% 72%, rgba(217, 33, 40, 0.86), transparent 24%), linear-gradient(135deg, #15171c, #2f2432)"
+  },
+  {
+    accent: "#7dd3fc",
+    glow: "#f7c948",
+    background:
+      "radial-gradient(circle at 72% 70%, rgba(125, 211, 252, 0.86), transparent 24%), linear-gradient(135deg, #111827, #20342e)"
+  }
+];
+
+function getInitials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
+}
 
 function TeamAvatar({
   index,
-  name,
-  photoUrl
+  name
 }: {
   index: number;
   name: string;
-  photoUrl?: string | null;
 }) {
-  const avatarClass =
-    "size-20 shrink-0 overflow-hidden rounded-lg border border-black/10 bg-ink shadow-sm";
-
-  if (photoUrl === generatedAvatarPackUrl) {
-    return (
-      <div
-        aria-label={`${name} avatar`}
-        className={avatarClass}
-        role="img"
-        style={{
-          backgroundImage: `url(${generatedAvatarPackUrl})`,
-          backgroundPosition: generatedAvatarPositions[index % generatedAvatarPositions.length],
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "200% 200%"
-        }}
-      />
-    );
-  }
-
-  if (photoUrl) {
-    return (
-      <div className={avatarClass}>
-        <Image
-          alt={`${name} profile image`}
-          className="size-full object-cover"
-          height={160}
-          sizes="80px"
-          src={photoUrl}
-          width={160}
-        />
-      </div>
-    );
-  }
+  const theme = avatarThemes[index % avatarThemes.length];
+  const style = {
+    "--avatar-accent": theme.accent,
+    "--avatar-glow": theme.glow,
+    animationDelay: `${index * 160}ms`,
+    background: theme.background
+  } as CSSProperties;
 
   return (
-    <div className={`${avatarClass} flex items-center justify-center text-ugandaGold`}>
-      <UserRound aria-hidden="true" size={32} />
+    <div
+      aria-label={`${name} abstract animated space avatar`}
+      className="team-avatar"
+      role="img"
+      style={style}
+    >
+      <span aria-hidden="true" className="team-avatar__orbit team-avatar__orbit--outer" />
+      <span aria-hidden="true" className="team-avatar__orbit team-avatar__orbit--inner" />
+      <span aria-hidden="true" className="team-avatar__core" />
+      <span aria-hidden="true" className="team-avatar__satellite" />
+      <span className="team-avatar__initials">{getInitials(name)}</span>
     </div>
   );
 }
@@ -103,7 +117,7 @@ export default async function TeamPage() {
                   key={member.id}
                 >
                   <div className="flex items-start gap-4">
-                    <TeamAvatar index={index} name={member.name} photoUrl={member.photoUrl} />
+                    <TeamAvatar index={index} name={member.name} />
                     <div className="min-w-0">
                       <p className="text-xs font-black uppercase tracking-normal text-ugandaRed">
                         {member.organisation}

@@ -123,6 +123,33 @@ const communities = [
     featured: false
   },
   {
+    name: "Infinity Computers",
+    category: "Technology Partner",
+    summary: "A technology partner supporting digital capacity for Uganda's space ecosystem.",
+    description:
+      "Infinity Computers contributes computing, digital infrastructure, and technology support for space education, outreach, and ecosystem coordination.",
+    location: "Uganda",
+    featured: true
+  },
+  {
+    name: "Nile Orbitals",
+    category: "Aerospace Technology",
+    summary: "An aerospace technology partner connected to Uganda's emerging orbital ambitions.",
+    description:
+      "Nile Orbitals brings aerospace technology perspective, technical leadership, and local mission ambition into the Space Uganda partner network.",
+    location: "Uganda",
+    featured: true
+  },
+  {
+    name: "Young Engineers Uganda",
+    category: "STEM Education",
+    summary: "A youth engineering and STEM education partner for hands-on learning.",
+    description:
+      "Young Engineers Uganda supports practical engineering education, student engagement, and hands-on STEM experiences for young learners.",
+    location: "Uganda",
+    featured: true
+  },
+  {
     name: "Aerobuddies",
     category: "Aerospace DIY",
     summary: "A community for aerospace DIY activities, aeromodelling, and youth-friendly demonstrations.",
@@ -267,6 +294,30 @@ const partners = [
       "An amateur engineering rocketry research and development club from Kenya referenced as a Rocket Revolution collaborator.",
     contribution: "Rocketry demonstration knowledge, regional collaboration, and aerospace engineering perspective.",
     featured: false
+  },
+  {
+    name: "Infinity Computers",
+    type: "Technology Partner",
+    description:
+      "A technology partner supporting computing, digital infrastructure, and practical technical capacity for the Space Uganda ecosystem.",
+    contribution: "Computing support, technology enablement, and digital infrastructure guidance.",
+    featured: true
+  },
+  {
+    name: "Nile Orbitals",
+    type: "Aerospace Technology Partner",
+    description:
+      "An aerospace technology partner connected to Uganda's emerging orbital, mission, and systems ambitions.",
+    contribution: "Aerospace technology leadership, mission perspective, and technical ecosystem support.",
+    featured: true
+  },
+  {
+    name: "Young Engineers Uganda",
+    type: "STEM Education Partner",
+    description:
+      "A youth engineering education partner creating practical, hands-on pathways into engineering and space-adjacent learning.",
+    contribution: "STEM education, hands-on engineering activities, and youth mobilisation.",
+    featured: true
   }
 ] as const;
 
@@ -438,6 +489,10 @@ async function main() {
       }
     });
   }
+
+  await prisma.teamMember.deleteMany({
+    where: { name: "Mugisha Trevour Jean-Claude" }
+  });
 
   for (const member of team) {
     await upsertTeamMember(member);

@@ -111,6 +111,33 @@ export const fallbackCommunities = [
     featured: false
   },
   {
+    name: "Infinity Computers",
+    category: "Technology Partner",
+    summary: "A technology partner supporting digital capacity for Uganda's space ecosystem.",
+    description:
+      "Infinity Computers contributes computing, digital infrastructure, and technology support for space education, outreach, and ecosystem coordination.",
+    location: "Uganda",
+    featured: true
+  },
+  {
+    name: "Nile Orbitals",
+    category: "Aerospace Technology",
+    summary: "An aerospace technology partner connected to Uganda's emerging orbital ambitions.",
+    description:
+      "Nile Orbitals brings aerospace technology perspective, technical leadership, and local mission ambition into the Space Uganda partner network.",
+    location: "Uganda",
+    featured: true
+  },
+  {
+    name: "Young Engineers Uganda",
+    category: "STEM Education",
+    summary: "A youth engineering and STEM education partner for hands-on learning.",
+    description:
+      "Young Engineers Uganda supports practical engineering education, student engagement, and hands-on STEM experiences for young learners.",
+    location: "Uganda",
+    featured: true
+  },
+  {
     name: "Aerobuddies",
     category: "Aerospace DIY",
     summary: "A community for aeromodelling, practical aerospace learning, and youth-friendly demos.",
@@ -319,8 +346,11 @@ export const fallbackCampaign = {
 };
 
 export const fallbackPartners = fallbackCommunities
-  .filter((community) => community.featured)
-  .slice(0, 8)
+  .filter(
+    (community) =>
+      community.featured ||
+      ["Infinity Computers", "Nile Orbitals", "Young Engineers Uganda"].includes(community.name)
+  )
   .map((community, index) => ({
     ...baseRecord(),
     id: `fallback-partner-${index + 1}`,
