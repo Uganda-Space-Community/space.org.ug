@@ -1,7 +1,7 @@
 [build]
   base = "space-uganda-site"
   command = "npm run build"
-  publish = ".next"
+  publish = "space-uganda-site/.next"
 
 [build.environment]
   NODE_VERSION = "22"
