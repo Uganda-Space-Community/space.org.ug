@@ -1,11 +1,12 @@
 "use client";
 
-import { Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { useActionState } from "react";
 import {
   createPublicSubmissionAction,
   type PublicSubmissionState
 } from "@/lib/submissions/actions";
+import { siteIdentity } from "@/lib/constants";
 
 const initialState: PublicSubmissionState = {};
 
@@ -192,9 +193,16 @@ export function SubmissionForm() {
         </div>
       </div>
       {state.errors?.root ? (
-        <p className="mt-5 rounded-md border border-ugandaRed/20 bg-ugandaRed/10 px-4 py-3 text-sm font-bold text-ugandaRed">
-          {state.errors.root}
-        </p>
+        <div className="mt-5 rounded-md border border-ugandaRed/20 bg-ugandaRed/10 px-4 py-3 text-sm font-bold text-ugandaRed">
+          <p>{state.errors.root}</p>
+          <a
+            className="mt-3 inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 text-ink transition hover:text-ugandaRed"
+            href={`mailto:${siteIdentity.contactEmail}`}
+          >
+            <Mail aria-hidden="true" size={15} />
+            Email {siteIdentity.contactEmail}
+          </a>
+        </div>
       ) : null}
       <button
         className="mt-6 inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 text-sm font-black text-white transition hover:bg-ugandaRed disabled:cursor-not-allowed disabled:opacity-60"

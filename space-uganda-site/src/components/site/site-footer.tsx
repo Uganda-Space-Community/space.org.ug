@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { ExternalLink, Rocket } from "lucide-react";
+import { Bell, ExternalLink, Mail, Rocket } from "lucide-react";
 import { siteIdentity } from "@/lib/constants";
 
 export function SiteFooter() {
+  const subscribeHref = `mailto:${siteIdentity.contactEmail}?subject=${encodeURIComponent(
+    "Subscribe me to Space Uganda updates"
+  )}`;
+
   return (
     <footer className="border-t border-black/10 bg-ink text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:px-8">
@@ -39,7 +43,17 @@ export function SiteFooter() {
               World Space Week
               <ExternalLink aria-hidden="true" size={14} />
             </Link>
-            <Link href="/join">Contact Space Uganda</Link>
+            <a className="inline-flex items-center gap-2" href={`mailto:${siteIdentity.contactEmail}`}>
+              <Mail aria-hidden="true" size={14} />
+              {siteIdentity.contactEmail}
+            </a>
+            <a
+              className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-ugandaGold px-4 py-2 text-sm font-black text-ink transition hover:bg-white"
+              href={subscribeHref}
+            >
+              <Bell aria-hidden="true" size={15} />
+              Subscribe
+            </a>
           </div>
         </div>
       </div>

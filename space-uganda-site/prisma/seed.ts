@@ -581,7 +581,7 @@ async function main() {
     },
     {
       key: "site.contactEmail",
-      value: "hello@space.org.ug"
+      value: "info@space.org.ug"
     },
     {
       key: "site.socialLinks",

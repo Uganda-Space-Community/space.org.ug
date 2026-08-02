@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
+import { siteIdentity } from "@/lib/constants";
 import {
   parseSubmissionFormData,
   submissionFormDataToValues
@@ -39,7 +40,7 @@ export async function createPublicSubmissionAction(
   } catch {
     return {
       errors: {
-        root: "We could not save this submission right now. Please try again soon."
+        root: `We could not save this submission right now. Please email ${siteIdentity.contactEmail} and we will route it to the organising team.`
       },
       values: submissionFormDataToValues(formData)
     };
