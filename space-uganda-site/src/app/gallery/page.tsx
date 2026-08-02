@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Camera, GalleryHorizontalEnd } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -21,20 +22,13 @@ export default async function GalleryPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-ink px-5 py-16 text-white md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-black uppercase tracking-normal text-ugandaGold">
-              Gallery
-            </p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-black md:text-7xl">
-              Uganda&apos;s space story in images
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              This page is ready for event photos, video covers, captions, press
-              shots, and future memories from Space Uganda programmes.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          description="This page is ready for event photos, video covers, captions, press shots, and future memories from Space Uganda programmes."
+          eyebrow="Gallery"
+          imageAlt="Cinematic space media archive with floating astronomy frames and camera lenses"
+          imageSrc="/assets/hero-gallery.png"
+          title="Uganda's space story in images"
+        />
 
         <section className="bg-paper px-5 py-16 md:px-8">
           <div className="mx-auto max-w-7xl">

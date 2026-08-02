@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Building2, MapPin } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -21,21 +22,13 @@ export default async function CommunityPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-ink px-5 py-16 text-white md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-black uppercase tracking-normal text-ugandaGold">
-              Community Directory
-            </p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-black md:text-7xl">
-              Uganda&apos;s space ecosystem under one umbrella
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              A living directory for organisations, universities, clubs, companies,
-              student branches, and programmes contributing to space education,
-              research, engineering, policy, astronomy, and outreach.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          description="A living directory for organisations, universities, clubs, companies, student branches, and programmes contributing to space education, research, engineering, policy, astronomy, and outreach."
+          eyebrow="Community Directory"
+          imageAlt="Orbital network lights over Uganda and East Africa from space"
+          imageSrc="/assets/hero-community.png"
+          title="Uganda's space ecosystem under one umbrella"
+        />
 
         <section className="bg-white px-5 py-10 md:px-8">
           <div className="mx-auto flex max-w-7xl flex-wrap gap-2">

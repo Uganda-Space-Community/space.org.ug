@@ -11,6 +11,7 @@ import {
   Telescope,
   UsersRound
 } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -37,21 +38,18 @@ export default async function ActivitiesPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-ink px-5 py-16 text-white md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-normal text-ugandaGold">
+        <PageHero
+          description="Space Uganda brings astronomy, engineering, public learning, industry exposure, and playful science engagement into programmes communities can run throughout the year."
+          eyebrow={
+            <>
               <Sparkles aria-hidden="true" size={16} />
               Activities
-            </p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-black md:text-7xl">
-              Year-round ways to experience space
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/72">
-              Space Uganda brings astronomy, engineering, public learning, industry exposure,
-              and playful science engagement into programmes communities can run throughout the year.
-            </p>
-          </div>
-        </section>
+            </>
+          }
+          imageAlt="Night-sky STEM activity stations with telescopes, robotics kits, and satellite models"
+          imageSrc="/assets/hero-activities.png"
+          title="Year-round ways to experience space"
+        />
 
         <section className="border-b border-black/10 bg-white">
           <div className="mx-auto grid max-w-7xl gap-4 px-5 py-6 md:grid-cols-4 md:px-8">

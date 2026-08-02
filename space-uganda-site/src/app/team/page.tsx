@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { Mail } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -88,20 +89,13 @@ export default async function TeamPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-ink px-5 py-16 text-white md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-black uppercase tracking-normal text-ugandaGold">
-              Team
-            </p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-black md:text-7xl">
-              Coordinators, organisers, and ecosystem builders
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              Space Uganda is coordinated by people from different organisations
-              working under a shared umbrella while preserving each community&apos;s identity.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          description="Space Uganda is coordinated by people from different organisations working under a shared umbrella while preserving each community's identity."
+          eyebrow="Team"
+          imageAlt="Futuristic mission coordination room with orbital maps and constellation networks"
+          imageSrc="/assets/hero-team.png"
+          title="Coordinators, organisers, and ecosystem builders"
+        />
 
         <section className="bg-paper px-5 py-16 md:px-8">
           <div className="mx-auto max-w-7xl">

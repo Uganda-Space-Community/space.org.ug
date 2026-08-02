@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,6 +9,7 @@ import {
   ShieldCheck,
   Sparkles
 } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -70,44 +70,28 @@ export default async function Wsw2026Page() {
     <>
       <SiteHeader />
       <main>
-        <section className="relative isolate overflow-hidden bg-ink text-white">
-          <Image
-            alt="World Space Week Uganda 2026 save the date visual"
-            className="absolute inset-0 -z-20 object-cover opacity-45"
-            fill
-            priority
-            src={campaign.heroImageUrl ?? "/assets/wsw-2026-save-the-date.png"}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(21,23,28,0.97),rgba(21,23,28,0.78),rgba(21,23,28,0.42))]" />
-          <div className="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-end px-5 py-16 md:px-8">
-            <p className="text-sm font-black uppercase tracking-normal text-ugandaGold">
-              {wsw2026.dateLabel}
-            </p>
-            <h1 className="mt-4 max-w-5xl text-5xl font-black leading-tight md:text-7xl">
-              World Space Week Uganda 2026
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/78">
-              {campaign.description}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                className="inline-flex items-center gap-2 rounded-md bg-ugandaGold px-5 py-3 font-black text-ink transition hover:bg-white"
-                href="/join"
-              >
-                Join the ecosystem
-                <ArrowRight aria-hidden="true" size={18} />
-              </Link>
-              <Link
-                className="inline-flex items-center gap-2 rounded-md border border-white/35 px-5 py-3 font-black text-white transition hover:border-ugandaGold hover:text-ugandaGold"
-                href="https://www.worldspaceweek.org/"
-              >
-                Official WSW site
-                <ExternalLink aria-hidden="true" size={18} />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          description={campaign.description}
+          eyebrow={wsw2026.dateLabel}
+          imageAlt="Cinematic rocket exhibition launch field under stars for World Space Week Uganda 2026"
+          imageSrc={campaign.heroImageUrl ?? "/assets/hero-wsw-2026.png"}
+          title="World Space Week Uganda 2026"
+        >
+          <Link
+            className="inline-flex items-center gap-2 rounded-md bg-ugandaGold px-5 py-3 font-black text-ink transition hover:bg-white"
+            href="/join"
+          >
+            Join the ecosystem
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+          <Link
+            className="inline-flex items-center gap-2 rounded-md border border-white/35 px-5 py-3 font-black text-white transition hover:border-ugandaGold hover:text-ugandaGold"
+            href="https://www.worldspaceweek.org/"
+          >
+            Official WSW site
+            <ExternalLink aria-hidden="true" size={18} />
+          </Link>
+        </PageHero>
 
         <section className="bg-white px-5 py-10 md:px-8">
           <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">

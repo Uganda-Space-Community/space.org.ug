@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Handshake, Lightbulb, Mail, Users } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -39,20 +40,13 @@ export default function JoinPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-ink px-5 py-16 text-white md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-black uppercase tracking-normal text-ugandaGold">
-              Join Space Uganda
-            </p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-black md:text-7xl">
-              Plug into Uganda&apos;s space ecosystem
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              Use one form to join the umbrella, propose a partnership, submit a
-              WSW Uganda 2026 innovation idea, or contact the organising team.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          description="Use one form to join the umbrella, propose a partnership, submit a WSW Uganda 2026 innovation idea, or contact the organising team."
+          eyebrow="Join Space Uganda"
+          imageAlt="Open-air space community hub with a glowing mission table under the Milky Way"
+          imageSrc="/assets/hero-join.png"
+          title="Plug into Uganda's space ecosystem"
+        />
 
         <section className="bg-white px-5 py-12 md:px-8">
           <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">

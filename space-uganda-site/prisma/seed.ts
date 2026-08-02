@@ -375,7 +375,7 @@ async function main() {
       endsAt: new Date("2026-10-10T23:59:00+03:00"),
       description:
         "Uganda's flagship national campaign for World Space Week 2026, connecting Rocket Revolution to astronomy, Earth observation, aerospace engineering, and local innovation.",
-      heroImageUrl: "/assets/wsw-2026-save-the-date.png",
+      heroImageUrl: "/assets/hero-wsw-2026.png",
       status: PublicationStatus.PUBLISHED
     },
     create: {
@@ -386,7 +386,7 @@ async function main() {
       endsAt: new Date("2026-10-10T23:59:00+03:00"),
       description:
         "Uganda's flagship national campaign for World Space Week 2026, connecting Rocket Revolution to astronomy, Earth observation, aerospace engineering, and local innovation.",
-      heroImageUrl: "/assets/wsw-2026-save-the-date.png",
+      heroImageUrl: "/assets/hero-wsw-2026.png",
       status: PublicationStatus.PUBLISHED
     }
   });
