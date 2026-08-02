@@ -90,7 +90,7 @@ export const organiserTeamMembers: TeamMemberSeed[] = [
     featured: true
   },
   {
-    name: "Bwengye Cosmas",
+    name: "Obwengye Cosmas",
     role: "Astronomy Organising Team",
     organisation: "Uganda Astronomical Society",
     bio: "Cosmas contributes to the Uganda Astronomical Society organising team, supporting astronomy outreach and community participation for national space activities.",
