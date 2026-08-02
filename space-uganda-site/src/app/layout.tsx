@@ -22,6 +22,13 @@ export const metadata: Metadata = {
   },
   description:
     "Uganda's umbrella home for space enthusiasts, educators, engineers, innovators, astronomers, and partner organisations.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+  },
   openGraph: {
     title: "Space Uganda",
     description:
